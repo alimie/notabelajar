@@ -13,23 +13,11 @@ tags:
   - sains
 ---
 
-**Daya** ialah **tarikan atau tolakan** yang bertindak ke atas sesuatu objek. Daya tarikan menyebabkan objek bergerak mendekati kita. Daya tolakan menyebabkan objek bergerak menjauhi kita. nnnn
+**Daya** ialah **tarikan atau tolakan** yang bertindak ke atas sesuatu objek. Daya tarikan menyebabkan objek bergerak mendekati kita. Daya tolakan menyebabkan objek bergerak menjauhi kita. 
 
-Aktiviti yang dilakukan oleh manusia adalah melibatkan **daya tarikan sahaja**, **daya tolakan sahaja** ataupun **kedua-dua daya tarikan dan daya tolakan**.nnnnnnnn
+Aktiviti yang dilakukan oleh manusia adalah melibatkan **daya tarikan sahaja**, **daya tolakan sahaja** ataupun **kedua-dua daya tarikan dan daya tolakan**.
 ### Contoh Aktiviti Daya Tarikan
-nnnnn
-nnnn
-nnnn
-nnnnnnnnn
-### Contoh Aktiviti Daya Tolakan
-nnnnn
-nnnn
-nnnn
-nnnnnnnnn
-### Contoh Aktiviti Daya Tarikan dan Tolakan
-nnnnn
-nnnn
-nnnn
-nnnnnnnnn
 
-nnnn
+### Contoh Aktiviti Daya Tolakan
+
+### Contoh Aktiviti Daya Tarikan dan Tolakan

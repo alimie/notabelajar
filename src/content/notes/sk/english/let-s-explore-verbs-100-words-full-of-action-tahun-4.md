@@ -14,7 +14,7 @@ tags:
   - vocabulary
 ---
 
-Hey there, word explorers! In this blog post, we've got a list of 100 amazing verbs. Each one comes with a little description and examples to show you how awesome and useful these words can be. Whether you're a budding writer, a curious learner, or just someone who loves to have fun with words, you're in for a treat!nnnn
+Hey there, word explorers! In this blog post, we've got a list of 100 amazing verbs. Each one comes with a little description and examples to show you how awesome and useful these words can be. Whether you're a budding writer, a curious learner, or just someone who loves to have fun with words, you're in for a treat!
 | **Verb** | **Description** | **Usage**
 | **Run** | Move quickly on foot with both legs in action. | "I want to run in the playground."
 | **Jump** | Propel oneself upward or forward with both feet. | "Let's jump over the puddle."

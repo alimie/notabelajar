@@ -12,24 +12,20 @@ tags:
   - sains
 ---
 
-Kita tidak akan nampak daya tetapi kita dapat melihat dan merasai kesannya. nnnnnnn
+Kita tidak akan nampak daya tetapi kita dapat melihat dan merasai kesannya. 
 
-Jika kamu menolak belon ke dalam bekas air, kamu akan berasa seolah-olah air dalam bekas melawan arah tolakan kamun
-nnnnnnnn
-Jika kamu menarik spring menggunakan kedua-dua tangan, kamu akan berasakan spring menarik semula tangan kamu untuk kembali ke bentuk asalnnnnnnnnnnn
+Jika kamu menolak belon ke dalam bekas air, kamu akan berasa seolah-olah air dalam bekas melawan arah tolakan kamu
 
-Terdapat 5 kesan daya iaitu:nnnn
+Jika kamu menarik spring menggunakan kedua-dua tangan, kamu akan berasakan spring menarik semula tangan kamu untuk kembali ke bentuk asal
+
+Terdapat 5 kesan daya iaitu:
 
 *_Daya boleh mengubah bentuk objek_*
-nnnn
 
 *_Daya boleh mengubah arah gerakan objek_*
-nnnn
 
 *_Daya boleh menghentikan objek yang bergerak_*
-nnnn
 
 *_Daya boleh menggerakkan objek pegun_*
-nnnn
 
 *_Daya boleh mengubah kelajuan objek yang bergerak_*

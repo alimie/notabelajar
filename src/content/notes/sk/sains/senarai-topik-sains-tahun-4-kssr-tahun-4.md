@@ -13,90 +13,99 @@ tags:
   - senarai topik
 ---
 
-- KEMAHIRAN SAINTIFIKnn
-- [Kemahiran Proses Sains](https://notabelajar.com/tag/kemahiran-proses-sains/)nnnn
-- Menggunakan Perhubungan Ruang Dan Masannnn
-- Mentafsir Datannnn
-- Mendefinisi Secara Operasinnnn
-- Mengawal Pemboleh Ubahnnnn
-- Membuat Hipotesisnnnn
-- Mengeksperimenn
-nnnnn
-- MANUSIAnn
-- Organ Pernafasan Manusiannnn
-- Proses Pernafasan Manusiannnn
-- Kandungan Oksigen Dan Karbon Dioksida Semasa Pernafasannnnn
-- Pergerakan Dada Semasa Pernafasannnnn
-- Kadar Pernafasannnnn
-- Situsai Yang Memberikan Kesan Terhadap Pernafasannnnn
-- Perkumuhan Dan Penyahtinjaannnnn
-- Organ Dan Hasilnyannnn
-- Kepentingan Perkumuhan Dan Penyahtinjaannnnn
-- Gerak Balas Terhadap Rangsangannnnn
-- Organ Deriannnn
-- Kepentingan Gerak Balasnnnn
-- Tabiat Yang Mengganggu Gerak Balas Manusian
-nnnnn
-- HAIWANnn
-- Organ Pernafasan Haiwannnnn
-- Pengelasan Haiwan Berdasarkan Organ Pernafasannnnn
-- Hidup Di Darat Dan Di Airnnnn
-- Haiwan Vertebrata Dan Haiwan Invertebratannnn
-- Ciri-Ciri Khusus Haiwan Vertebratan
-nnnnn
-- TUMBUH-TUMBUHANnn
-- Gerak Balas Tumbuh-Tumbuhannnnn
-- Fotosintesisnnnn
-- Keperluan Proses Fotosintesisnnnn
-- Hasil Proses Fotosintesisnnnn
-- Kepentingan Fotosintesis Kepada Hidupann
-nnnnn
-- SIFAT CAHAYAnn
-- Pergerakan Cahayannnn
-- Kejelasan Bayang-Bayang Objeknnnn
-- Faktor Yang Mempengaruhi Saiz Bayang-Bayangnnnn
-- Faktor Yang Mempengaruhi Bentuk Bayang-Bayangnnnn
-- Pantulan Cahayannnn
-- Kegunaan Pantulan Cahayannnn
-- Gambar Rajah Sinarnnnn
-- Pembiasan Cahayannnn
-- Pembentukan Pelanginnnn
-- Kepentingan Sifat Cahaya Dalam Kehidupann
-nnnnn
-- BUNYInn
-- Getaran Dan Bunyinnnn
-- Bunyi Bergeraknnnn
-- Bunyi Boleh Dipantulkannnnn
-- Fenomena Pantulan Bunyinnnn
-- Bunyi Yang Berfaedah Dan Bunyi Yang Memudaratkannnnn
-- Mengurangkan Pencemaran Bunyin
-nnnnn
-- TENAGAnn
-- Tenaga Dan Sumbernyannnn
-- Bentuk Tenagannnn
-- Perubahan Bentuk Tenagannnn
-- Tenaga Tidak Boleh Dicipta Atau Dimusnahkannnnn
-- Sumber Tenaga Yang Boleh Dibaharui Dan Tidak Boleh Dibaharuinnnn
-- Berhemat Menggunakan Tenagan
-nnnnn
-- BAHANnn
-- Sumber Asas Bahannnnn
-- Sifat Bahannnnn
-- Aplikasi Sifat Bahannnnn
-- Pemilihan Jenis Bahan Untuk Mereka Cipta Objekn
-nnnnn
-- BUMInn
-- Graviti Buminnnn
-- Daya Tarikan Graviti Buminnnn
-- Kepentingan Daya Tarikan Graviti Buminnnn
-- Putaran Dan Peredaran Buminnnn
-- Arah Dan Tempoh Semasa Putaran Dan Peredaran Buminnnn
-- Kesan Putaran Bumi Pada Paksinyan
-nnnnn
-- MESINnn
-- Tuasnnnn
-- Hubung Kait Beban, Fulkrum Dan Dayannnn
-- Mesin Ringkasnnnn
-- Mesin Ringkas Menyelesaikan Masalahnnnn
-- Mesin Kompleksn
-nn
+### KEMAHIRAN SAINTIFIK
+
+- [Kemahiran Proses Sains](https://notabelajar.com/tag/kemahiran-proses-sains/)
+- Menggunakan Perhubungan Ruang Dan Masa
+- Mentafsir Data
+- Mendefinisi Secara Operasi
+- Mengawal Pemboleh Ubah
+- Membuat Hipotesis
+- Mengeksperimen
+
+### MANUSIA
+
+- Organ Pernafasan Manusia
+- Proses Pernafasan Manusia
+- Kandungan Oksigen Dan Karbon Dioksida Semasa Pernafasan
+- Pergerakan Dada Semasa Pernafasan
+- Kadar Pernafasan
+- Situasi Yang Memberikan Kesan Terhadap Pernafasan
+- Perkumuhan Dan Penyahtinjaan
+- Organ Dan Hasilnya
+- Kepentingan Perkumuhan Dan Penyahtinjaan
+- Gerak Balas Terhadap Rangsangan
+- Organ Deria
+- Kepentingan Gerak Balas
+- Tabiat Yang Mengganggu Gerak Balas Manusia
+
+### HAIWAN
+
+- Organ Pernafasan Haiwan
+- Pengelasan Haiwan Berdasarkan Organ Pernafasan
+- Hidup Di Darat Dan Di Air
+- Haiwan Vertebrata Dan Haiwan Invertebrata
+- Ciri-Ciri Khusus Haiwan Vertebrata
+
+### TUMBUH-TUMBUHAN
+
+- Gerak Balas Tumbuh-Tumbuhan
+- Fotosintesis
+- Keperluan Proses Fotosintesis
+- Hasil Proses Fotosintesis
+- Kepentingan Fotosintesis Kepada Hidupan
+
+### SIFAT CAHAYA
+
+- Pergerakan Cahaya
+- Kejelasan Bayang-Bayang Objek
+- Faktor Yang Mempengaruhi Saiz Bayang-Bayang
+- Faktor Yang Mempengaruhi Bentuk Bayang-Bayang
+- Pantulan Cahaya
+- Kegunaan Pantulan Cahaya
+- Gambar Rajah Sinar
+- Pembiasan Cahaya
+- Pembentukan Pelangi
+- Kepentingan Sifat Cahaya Dalam Kehidupan
+
+### BUNYI
+
+- Getaran Dan Bunyi
+- Bunyi Bergerak
+- Bunyi Boleh Dipantulkan
+- Fenomena Pantulan Bunyi
+- Bunyi Yang Berfaedah Dan Bunyi Yang Memudaratkan
+- Mengurangkan Pencemaran Bunyi
+
+### TENAGA
+
+- Tenaga Dan Sumbernya
+- Bentuk Tenaga
+- Perubahan Bentuk Tenaga
+- Tenaga Tidak Boleh Dicipta Atau Dimusnahkan
+- Sumber Tenaga Yang Boleh Dibaharui Dan Tidak Boleh Dibaharui
+- Berhemat Menggunakan Tenaga
+
+### BAHAN
+
+- Sumber Asas Bahan
+- Sifat Bahan
+- Aplikasi Sifat Bahan
+- Pemilihan Jenis Bahan Untuk Mereka Cipta Objek
+
+### BUMI
+
+- Graviti Bumi
+- Daya Tarikan Graviti Bumi
+- Kepentingan Daya Tarikan Graviti Bumi
+- Putaran Dan Peredaran Bumi
+- Arah Dan Tempoh Semasa Putaran Dan Peredaran Bumi
+- Kesan Putaran Bumi Pada Paksinya
+
+### MESIN
+
+- Tuas
+- Hubung Kait Beban, Fulcrum Dan Daya
+- Mesin Ringkas
+- Mesin Ringkas Menyelesaikan Masalah
+- Mesin Kompleks

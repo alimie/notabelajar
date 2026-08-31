@@ -13,25 +13,22 @@ tags:
   - fizik
 ---
 
-Objek yang berlainan bergerak dengan kelajuan yang berbeza.** Kelajuan bermaksud ukuran cepat atau lambat sesuatu objek yang bergerak** dari suatu tempat ke suatu tempat yang lain.nnnnn
-- Kereta yang bergerak perlahan adalah kurang laju dan akan mengambil masa yang lebih lama untuk sampai ke destinasinya.nnnn
+Objek yang berlainan bergerak dengan kelajuan yang berbeza.** Kelajuan bermaksud ukuran cepat atau lambat sesuatu objek yang bergerak** dari suatu tempat ke suatu tempat yang lain.
+- Kereta yang bergerak perlahan adalah kurang laju dan akan mengambil masa yang lebih lama untuk sampai ke destinasinya.
 - Jika motosikal dan basikal bergerak dengan kelajuan yang sama, masa yang diambil untuk tiba ke destinasi adalah sama.n
-nnnnnnnn
-### Unit Kelajuan
-nnnn
 
-Kelajuan melibatkan ukuran jarak dan masa sesuatu objek bergerak. Unit ukuran bagi kelajuan ialah gabungan kedua-dua unit jarak dan masa.nnnn
+### Unit Kelajuan
+
+Kelajuan melibatkan ukuran jarak dan masa sesuatu objek bergerak. Unit ukuran bagi kelajuan ialah gabungan kedua-dua unit jarak dan masa.
 | **Unit Ukuran Jarak / Panjang** | **Unit Ukuran Masa**
 | milimeter (mm) | milimetre (mm) | saat (s) | second (s)
 | sentimeter (cm) | centimetre (cm) | minit (m) | minute (m)
 | meter (m) | metre (m) | jam (j) | hour (h)
 | kilometer (km) | kilometre (km) | 
 
-
 *_Unit Ukuran Piawai - ∎ istilah bahasa Melayu | ∎ istilah bahasa Inggeris_*
-nnnnnnnn
 
-Antara unit kelajuan yang biasa digunakan ialah **sentimeter per saat (cm/s)**, **meter per saat (m/s)** dan **kilometer per jam (km/j)**.nnnn
+Antara unit kelajuan yang biasa digunakan ialah **sentimeter per saat (cm/s)**, **meter per saat (m/s)** dan **kilometer per jam (km/j)**.
 | **Objek Bergerak** | **Unit kelajuan**
 |
 | Siput bergerak sejauh 2 sentimeter dalam masa 1 saat. Maka, unit kelajuan pergerakan siput ialah cm/s. Kelajuan siput ialah 2 cm/s
@@ -40,14 +37,12 @@ Antara unit kelajuan yang biasa digunakan ialah **sentimeter per saat (cm/s)**, 
 |
 | Kuda dapat bergerak sejauh 77 kilometer dalam masa 1 jam. Maka, unit kelajuan pergerakan kuda ialah km/j. Kelajuan kuda ialah 77 km/j
 
-nnnnn
-- Unit kelajuan kilometer per jam (km/j) tidak sesuai digunakan untuk mengukur kelajuan pergerakan siput kerana siput bergerak terlalu perlahan.nnnn
+- Unit kelajuan kilometer per jam (km/j) tidak sesuai digunakan untuk mengukur kelajuan pergerakan siput kerana siput bergerak terlalu perlahan.
 - Objek yang bergerak laju seperti kuda dan kereta pula lebih sesuai diukur dengan menggunakan unit kilometer per jam (km/j) berbanding sentimeter per saat (cm/s) ataupun meter per saat (m/s).n
-nnnn
 
-Kenderaan seperti kereta dan motosikal mempunyai **meter kelajuan (speedometer)** untuk membolehkan pemandu mengetahui kelajuan kenderaan tersebut bergerak.nnnn
-Speedometer ini mempunyai jarum yang akan bergerak yang menandakan kelajuan kenderaan. nnnn
+Kenderaan seperti kereta dan motosikal mempunyai **meter kelajuan (speedometer)** untuk membolehkan pemandu mengetahui kelajuan kenderaan tersebut bergerak.
+Speedometer ini mempunyai jarum yang akan bergerak yang menandakan kelajuan kenderaan. 
 
-Jika jarum menunjukkan angka 80, ianya bermaksud kenderaan tersebut bergerak dengan kelajuan 80 kilometer per jam (80 km/j). nnnn
+Jika jarum menunjukkan angka 80, ianya bermaksud kenderaan tersebut bergerak dengan kelajuan 80 kilometer per jam (80 km/j). 
 
 km/h seperti terdapat dalam gambar ini ialah unit kelajuan dalam istilah bahasa Inggeris iaitu kilometre per hour.nn

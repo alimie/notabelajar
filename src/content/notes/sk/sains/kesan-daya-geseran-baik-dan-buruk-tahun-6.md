@@ -12,7 +12,7 @@ tags:
   - sains
 ---
 
-Daya geseran merupakan daya yang terhasil apabila dua permukaan objek bersentuhan. Oleh itu, terdapat beberapa kesan baik dan kesan buruk yang akan timbul. nnnn
+Daya geseran merupakan daya yang terhasil apabila dua permukaan objek bersentuhan. Oleh itu, terdapat beberapa kesan baik dan kesan buruk yang akan timbul. 
 | **Situasi** | **Kebaikan** | **Keburukan**
 |
 Geseran antara kasut dan jalan | Membolehkan kita berjalan tanpa tergelincir | Menyebabkan tapak kasut menjadi haus
@@ -29,8 +29,4 @@ Geseran antara bola golf dengan padang | | Menyebabkan bola terhenti sebelum mas
 |
 Geseran antara mata gergaji dengan kayu | | Bunyi bising dihasilkan
 
-nnnn
-
-Bergantung kepada situasi / keadaan yang dihadapi manusia, daya geseran boleh memberikan kesan yang baik atau kesan yang buruk atau kedua-duanya sekali.nnnn
-
-nnnn
+Bergantung kepada situasi / keadaan yang dihadapi manusia, daya geseran boleh memberikan kesan yang baik atau kesan yang buruk atau kedua-duanya sekali.

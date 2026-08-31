@@ -12,59 +12,48 @@ tags:
   - sains
 ---
 
-**Daya geseran** ialah daya yang terhasil apabila dua permukaan bersentuhan antara satu sama lain.nnnn
+**Daya geseran** ialah daya yang terhasil apabila dua permukaan bersentuhan antara satu sama lain.
 
-Contoh situasi / tempat berlaku daya geseran:nnnnn
-- Permukaan tapak kasut dengan permukaan jalannnnn
-- Permukaan bawah almari dengan permukaan lantai biliknnnn
-- Permukaan bola dengan permukaan padangnnnn
-- Permukaan buah karom dengan permukaan papan karomn
-nnnnnn
+Contoh situasi / tempat berlaku daya geseran:
+- Permukaan tapak kasut dengan permukaan jalan
+- Permukaan bawah almari dengan permukaan lantai bilik
+- Permukaan bola dengan permukaan padang
+- Permukaan buah karom dengan permukaan papan karom
 
 *_Permainan Karom_*
-nnnnnn
 
-Dalam permainan karom, gundu akan dijentik oleh pemain ke arah buah karom untuk memasukkan buah karom ke dalam saku yang terdapat pada penjuru papan karom. nnnn
+Dalam permainan karom, gundu akan dijentik oleh pemain ke arah buah karom untuk memasukkan buah karom ke dalam saku yang terdapat pada penjuru papan karom. 
 
-**Gundu / buah karom** yang dijentik boleh terhenti bergerak kerana terdapat daya geseran antara papan karom dengan buah karom.nnnnnn
+**Gundu / buah karom** yang dijentik boleh terhenti bergerak kerana terdapat daya geseran antara papan karom dengan buah karom.
 
-Daya geseran sentiasa bergerak berlawanan dengan arah pergerakan objek.nnnn
-nnnn
+Daya geseran sentiasa bergerak berlawanan dengan arah pergerakan objek.
 
-Daya geseran menyebabkan objek bergerak makin perlahan dan akhirnya terhenti.nnnn
+Daya geseran menyebabkan objek bergerak makin perlahan dan akhirnya terhenti.
 
-nnnnnnnn
 ## Faktor Mempengaruhi Daya Geseran
 
 [![](https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80)](https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80)
 
 *Ilustrasi berkaitan*
-nnnnn[Faktor 1 - **Jenis Permukaan**](#jenis-permukaan)nnnn[Faktor 2 - **Jisim Objek**](#jisim-objek)nnnnn
+[Faktor 1 - **Jenis Permukaan**](#jenis-permukaan)[Faktor 2 - **Jisim Objek**](#jisim-objek)
 ##### Jenis Permukaan
-nnnn
 
-Dalam permainan karom, tepung ditabur pada permukaan papan karom untuk membolehkan gundu dan buah karom bergerak lebih jauh dan lebih mudah.nnnn
+Dalam permainan karom, tepung ditabur pada permukaan papan karom untuk membolehkan gundu dan buah karom bergerak lebih jauh dan lebih mudah.
 
-Tepung yang ditabur menyebabkan permukaan papan karom menjadi licin. Semakin bertambah licin permukaan papan karom, semakin berkurang daya geseran. Semakin berkurang daya geseran, semakin jauh gundu dan buah karom bergerak.nnnnn
+Tepung yang ditabur menyebabkan permukaan papan karom menjadi licin. Semakin bertambah licin permukaan papan karom, semakin berkurang daya geseran. Semakin berkurang daya geseran, semakin jauh gundu dan buah karom bergerak.
 
 *_Lantai basah paling licin dan paling sedikit daya geseran_*
-nnnn
 
 *_Permukaan jalan berturap sesuai untuk kenderaan bergerak_*
-nnnn
 
 *_Permukaan padang adalah paling kasar dan sukar untuk kenderaan bergerak_*
-nnnnn
 
-Semakin bertambah kasar sesuatu permukaan, semakin bertambah daya geseran. Semakin bertambah licin sesuatu permukaan, semakin berkurang daya geseran.nnnn
+Semakin bertambah kasar sesuatu permukaan, semakin bertambah daya geseran. Semakin bertambah licin sesuatu permukaan, semakin berkurang daya geseran.
 
-nnnn
 ##### Jisim Objek
-nnnnnn
-nnnnnn
 
-Kotak A lebih kecil berbanding kotak B. Oleh itu, jisim (berat) kotak B adalah lebih besar berbanding jisim (berat) kotak A.nnnn
+Kotak A lebih kecil berbanding kotak B. Oleh itu, jisim (berat) kotak B adalah lebih besar berbanding jisim (berat) kotak A.
 
-Jika orang yang sama disuruh untuk menolak kotak A dan kotak B, kotak B adalah lebih sukar untuk digerakkan.nnnn
+Jika orang yang sama disuruh untuk menolak kotak A dan kotak B, kotak B adalah lebih sukar untuk digerakkan.
 
-Daya geseran bertambah apabila jisim (berat objek) bertambah. Apabila jisim objek berkurang, daya geseran juga turut berkurang.nnn
+Daya geseran bertambah apabila jisim (berat objek) bertambah. Apabila jisim objek berkurang, daya geseran juga turut berkurang.

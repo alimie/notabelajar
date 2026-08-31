@@ -13,7 +13,7 @@ tags:
   - vocabulary
 ---
 
-Irregular verbs do not follow the typical pattern when forming their past simple and past participle forms, so it's essential to memorize them. Here is the list of irregular verbs in table form:nnnn
+Irregular verbs do not follow the typical pattern when forming their past simple and past participle forms, so it's essential to memorize them. Here is the list of irregular verbs in table form:
 | **Base Form** | **Past Simple** | **Past Participle** | **Base Form** | **Past Simple** | **Past Participle**
 | awake | awoke | awoken | bear | bore | borne / born
 | beat | beat | beaten | become | became | become
