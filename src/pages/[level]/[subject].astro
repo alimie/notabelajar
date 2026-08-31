@@ -34,7 +34,7 @@ const levelPath = level === 'sk' ? 'sk' : 'smk';
 ---
 
 <BaseLayout
-  title="{subjectName} — {levelName} — NotaBelajar"
+  title={`${subjectName} — ${levelName} — NotaBelajar`}
   breadcrumbs={[
     { label: 'Laman Utama', href: '/notabelajar/' },
     { label: levelName, href: `/notabelajar/${levelPath}` },
