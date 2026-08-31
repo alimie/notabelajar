@@ -1,6 +1,6 @@
 $fontTypes: (
-    'regular': ('Inter', system-ui, -apple-system, sans-serif),
-    'bold': ('Plus Jakarta Sans', 'Inter', system-ui, sans-serif),
+    'regular': ('Poppins', system-ui, -apple-system, sans-serif),
+    'bold': ('Outfit', 'Poppins', system-ui, sans-serif),
 ) !default;
 
 $fontSizes: (
@@ -48,30 +48,30 @@ $radius: (
     'max': 100%,
 ) !default;
 
-// Custom theme colours untuk NotaBelajar
+// NotaBelajar Ceramic palette — original site colours
 $themes: (
     light: (
         scheme: light,
-        primary: hsl(0, 0%, 5%),
-        primary-10: hsl(0, 0%, 12%),
-        primary-20: hsl(0, 0%, 25%),
-        primary-30: hsl(0, 0%, 44%),
-        primary-40: hsl(0, 0%, 68%),
-        primary-50: hsl(0, 0%, 80%),
-        primary-60: hsl(0, 0%, 92%),
-        primary-70: hsl(0, 0%, 97%),
-        info: hsl(200, 100%, 42%),
-        info-accent: hsl(200, 100%, 50%),
-        info-fg: hsl(0, 0%, 100%),
-        success: hsl(155, 60%, 36%),
-        success-accent: hsl(155, 65%, 45%),
-        success-fg: hsl(0, 0%, 100%),
-        warning: hsl(32, 100%, 40%),
-        warning-accent: hsl(32, 100%, 50%),
-        warning-fg: hsl(0, 0%, 100%),
-        alert: hsl(0, 72%, 40%),
-        alert-accent: hsl(0, 72%, 50%),
-        alert-fg: hsl(0, 0%, 100%),
-        overlay: hsla(0, 0%, 0%, 0.35),
+        primary: #2F363F,
+        primary-10: #3D4650,
+        primary-20: #4A5A6A,
+        primary-30: #7A8A8A,
+        primary-40: #9DA394,
+        primary-50: #C9D4C8,
+        primary-60: #E9D9C8,
+        primary-70: #F5EDE4,
+        info: #4A5D6A,
+        info-accent: #3D5A5A,
+        info-fg: #FFFFFF,
+        success: #9DA394,
+        success-accent: #A38652,
+        success-fg: #FFFFFF,
+        warning: #E2A48A,
+        warning-accent: #C17559,
+        warning-fg: #FFFFFF,
+        alert: #8B5D4E,
+        alert-accent: #C17559,
+        alert-fg: #FFFFFF,
+        overlay: rgba(47, 54, 63, 0.35),
     ),
 ) !default;

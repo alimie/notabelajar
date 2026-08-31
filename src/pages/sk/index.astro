@@ -7,23 +7,23 @@ const skNotes = allNotes.filter(n => n.data.level === 'sk');
 const subjects = [...new Set(skNotes.map(n => n.data.subject))];
 
 const subjectInfo = {
-  'bm': { name: 'Bahasa Melayu', icon: '🇲🇾', color: '#dc2626' },
-  'english': { name: 'English', icon: '🇬🇧', color: '#2563eb' },
-  'matematik': { name: 'Matematik', icon: '🔢', color: '#7c3aed' },
-  'sains': { name: 'Sains', icon: '🔬', color: '#059669' },
-  'sejarah': { name: 'Sejarah', icon: '📜', color: '#d97706' },
+  'bm': { name: 'Bahasa Melayu', icon: '🇲🇾', color: '#3D5A5A' },
+  'english': { name: 'English', icon: '🇬🇧', color: '#4A5D6A' },
+  'matematik': { name: 'Matematik', icon: '🔢', color: '#A38652' },
+  'sains': { name: 'Sains', icon: '🔬', color: '#4A5D6A' },
+  'sejarah': { name: 'Sejarah', icon: '📜', color: '#8B5D4E' },
 };
 ---
 
 <BaseLayout title="Sekolah Rendah — NotaBelajar" description="Nota pembelajaran untuk Tahun 1 hingga 6" breadcrumbs={[{ label: 'Laman Utama', href: '/notabelajar/' }, { label: 'Sekolah Rendah (SK)' }]}>
-  <p style="color:var(--w-color-primary-30);margin-top:-0.5rem;margin-bottom:2rem;">
+  <p style="color:var(--ceramic-sage);margin-top:-0.5rem;margin-bottom:2rem;">
     Koleksi nota untuk murid Tahun 1 hingga Tahun 6 — pelbagai subjek.
-    <strong style="font-weight:600;">{skNotes.length} nota</strong> tersedia.
+    <strong style="font-weight:600;color:var(--ceramic-dark);">{skNotes.length} nota</strong> tersedia.
   </p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;">
     {subjects.map(subject => {
-      const info = subjectInfo[subject] || { name: subject, icon: '📖', color: '#64748b' };
+      const info = subjectInfo[subject] || { name: subject, icon: '📖', color: '#4A5D6A' };
       const notes = skNotes.filter(n => n.data.subject === subject);
       const years = [...new Set(notes.map(n => n.data.year))].sort();
       return (
@@ -32,7 +32,7 @@ const subjectInfo = {
           class="subject-card"
           style={`--accent:${info.color};`}
         >
-          <div class="icon-wrap" style={`background:${info.color}15;`}>
+          <div class="icon-wrap" style={`background:${info.color}12;`}>
             <span class="icon">{info.icon}</span>
           </div>
           <div>
@@ -47,7 +47,7 @@ const subjectInfo = {
   </div>
 
   {skNotes.length === 0 && (
-    <p style="color:var(--w-color-primary-30);text-align:center;padding:3rem 0;">
+    <p style="color:var(--ceramic-sage);text-align:center;padding:3rem 0;">
       Belum ada nota untuk SK. Nota akan ditambah dari masa ke semasa.
     </p>
   )}
@@ -57,8 +57,8 @@ const subjectInfo = {
       display: flex;
       align-items: center;
       gap: 1rem;
-      background: white;
-      border: 1px solid var(--w-color-primary-50);
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(201,212,200,0.6);
       border-left: 3px solid var(--accent);
       border-radius: 12px;
       padding: 1.25rem;
@@ -85,15 +85,15 @@ const subjectInfo = {
       line-height: 1;
     }
     .subject-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Outfit', sans-serif;
       font-weight: 700;
       font-size: 1.05rem;
       margin: 0;
-      color: var(--w-color-primary);
+      color: var(--ceramic-dark);
     }
     .subject-meta {
       font-size: 0.82rem;
-      color: var(--w-color-primary-30);
+      color: var(--ceramic-sage);
       margin-top: 0.15rem;
     }
   </style>
