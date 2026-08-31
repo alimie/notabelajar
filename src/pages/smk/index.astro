@@ -7,40 +7,99 @@ const smkNotes = allNotes.filter(n => n.data.level === 'smk');
 const subjects = [...new Set(smkNotes.map(n => n.data.subject))];
 
 const subjectInfo = {
-  'bm': { name: 'Bahasa Melayu', icon: '🇲🇾' },
-  'english': { name: 'English', icon: '🇬🇧' },
-  'matematik': { name: 'Matematik', icon: '🔢' },
-  'sains': { name: 'Sains', icon: '🔬' },
-  'sejarah': { name: 'Sejarah', icon: '📜' },
-  'geografi': { name: 'Geografi', icon: '🌍' },
-  'fizik': { name: 'Fizik', icon: '⚡' },
-  'kimia': { name: 'Kimia', icon: '🧪' },
-  'biologi': { name: 'Biologi', icon: '🧬' },
-  'matematik-tambahan': { name: 'Matematik Tambahan', icon: '📐' },
+  'bm': { name: 'Bahasa Melayu', icon: '🇲🇾', color: '#dc2626' },
+  'english': { name: 'English', icon: '🇬🇧', color: '#2563eb' },
+  'matematik': { name: 'Matematik', icon: '🔢', color: '#7c3aed' },
+  'sains': { name: 'Sains', icon: '🔬', color: '#059669' },
+  'sejarah': { name: 'Sejarah', icon: '📜', color: '#d97706' },
+  'geografi': { name: 'Geografi', icon: '🌍', color: '#0891b2' },
+  'fizik': { name: 'Fizik', icon: '⚡', color: '#e11d48' },
+  'kimia': { name: 'Kimia', icon: '🧪', color: '#9333ea' },
+  'biologi': { name: 'Biologi', icon: '🧬', color: '#16a34a' },
+  'matematik-tambahan': { name: 'Matematik Tambahan', icon: '📐', color: '#1d4ed8' },
 };
 ---
 
-<BaseLayout title="Sekolah Menengah — NotaBelajar">
-  <div class="breadcrumb">
-    <a href="/notabelajar/">Laman Utama</a> / Sekolah Menengah
-  </div>
-
-  <h1>🏫 Sekolah Menengah (SMK)</h1>
-  <p style="color:var(--text-muted);margin-bottom:2rem;">
-    Nota untuk Tingkatan 1 hingga Tingkatan 5 — pelbagai subjek.
-    ({smkNotes.length} nota tersedia)
+<BaseLayout title="Sekolah Menengah — NotaBelajar" description="Nota pembelajaran untuk Tingkatan 1 hingga 5" breadcrumbs={[{ label: 'Laman Utama', href: '/notabelajar/' }, { label: 'Sekolah Menengah (SMK)' }]}>
+  <p style="color:var(--w-color-primary-30);margin-top:-0.5rem;margin-bottom:2rem;">
+    Koleksi nota untuk pelajar Tingkatan 1 hingga Tingkatan 5 — pelbagai subjek.
+    <strong style="font-weight:600;">{smkNotes.length} nota</strong> tersedia.
   </p>
 
-  <div class="card-grid">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;">
     {subjects.map(subject => {
-      const info = subjectInfo[subject] || { name: subject, icon: '📖' };
+      const info = subjectInfo[subject] || { name: subject, icon: '📖', color: '#64748b' };
       const notes = smkNotes.filter(n => n.data.subject === subject);
+      const years = [...new Set(notes.map(n => n.data.year))].sort();
       return (
-        <a href={`/notabelajar/smk/${subject}`} class="card">
-          <h3>{info.icon} {info.name}</h3>
-          <div class="meta">{notes.length} nota — Tingkatan {[...new Set(notes.map(n => n.data.year))].sort().join(', ')}</div>
+        <a
+          href={`/notabelajar/smk/${subject}`}
+          class="subject-card"
+          style={`--accent:${info.color};`}
+        >
+          <div class="icon-wrap" style={`background:${info.color}15;`}>
+            <span class="icon">{info.icon}</span>
+          </div>
+          <div>
+            <h3 class="subject-title">{info.name}</h3>
+            <div class="subject-meta">
+              {notes.length} nota · Tingkatan {years.join(', ')}
+            </div>
+          </div>
         </a>
       );
     })}
   </div>
+
+  {smkNotes.length === 0 && (
+    <p style="color:var(--w-color-primary-30);text-align:center;padding:3rem 0;">
+      Belum ada nota untuk SMK. Nota akan ditambah dari masa ke semasa.
+    </p>
+  )}
+
+  <style>
+    .subject-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      border: 1px solid var(--w-color-primary-50);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .subject-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    }
+    .icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .subject-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin: 0;
+      color: var(--w-color-primary);
+    }
+    .subject-meta {
+      font-size: 0.82rem;
+      color: var(--w-color-primary-30);
+      margin-top: 0.15rem;
+    }
+  </style>
 </BaseLayout>

@@ -16,5 +16,10 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "sass": "1.100.0",
+    "typescript": "5.9.3",
+    "webcoreui": "1.5.0"
   }
 }

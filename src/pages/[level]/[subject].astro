@@ -16,54 +16,100 @@ export async function getStaticPaths() {
 
 const { level, subject } = Astro.params;
 const allNotes = await getCollection('notes');
-const notes = allNotes.filter(n => n.data.level === level && n.data.subject === subject);
+const filteredNotes = allNotes.filter(n => n.data.level === level && n.data.subject === subject);
 
 const levelName = level === 'sk' ? 'Sekolah Rendah' : 'Sekolah Menengah';
-const levelTitle = level === 'sk' ? 'SK' : 'SMK';
+const levelLabel = level === 'sk' ? 'SK' : 'SMK';
 const subjectName = subject.charAt(0).toUpperCase() + subject.slice(1).replace(/-/g, ' ');
 
-// Group by year
 const byYear = {};
-for (const note of notes) {
+for (const note of filteredNotes) {
   const year = note.data.year;
   if (!byYear[year]) byYear[year] = [];
   byYear[year].push(note);
 }
 const years = Object.keys(byYear).sort();
+
+const levelPath = level === 'sk' ? 'sk' : 'smk';
 ---
 
-<BaseLayout title="{subjectName} — {levelName} — NotaBelajar">
-  <div class="breadcrumb">
-    <a href="/notabelajar/">Laman Utama</a> /
-    <a href={`/notabelajar/${level}`}>{levelName}</a> /
-    {subjectName}
+<BaseLayout
+  title="{subjectName} — {levelName} — NotaBelajar"
+  breadcrumbs={[
+    { label: 'Laman Utama', href: '/notabelajar/' },
+    { label: levelName, href: `/notabelajar/${levelPath}` },
+    { label: subjectName },
+  ]}
+>
+  <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1.5rem;">
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.2rem 0.6rem;border-radius:6px;font-size:0.8rem;font-weight:600;color:white;background:{level === 'sk' ? '#059669' : '#d97706'};">
+      {levelLabel}
+    </span>
+    <span style="font-size:0.9rem;color:var(--w-color-primary-30);">
+      {filteredNotes.length} nota
+    </span>
   </div>
 
-  <h1>{subjectName}</h1>
-  <p style="color:var(--text-muted);margin-bottom:1rem;">
-    <span class="level-badge {level}">{levelTitle}</span>
-    <span style="margin-left:0.5rem;">{notes.length} nota</span>
-  </p>
-
   {years.map(year => (
-    <div style="margin-top:1.5rem;">
-      <h2 style="font-size:1.2rem;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:0.3rem;">
+    <div style="margin-bottom:2rem;">
+      <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.15rem;padding-bottom:0.5rem;border-bottom:2px solid var(--w-color-primary-50);margin-bottom:0.75rem;">
         {level === 'sk' ? `Tahun ${year}` : `Tingkatan ${year}`}
       </h2>
-      <div style="margin-top:0.75rem;">
+
+      <div style="display:flex;flex-direction:column;gap:0.6rem;">
         {byYear[year].map(note => (
-          <a href={`/notabelajar/${note.id}`} class="card" style="margin-bottom:0.5rem;">
-            <h3 style="font-size:1rem;">{note.data.title}</h3>
-            <div class="meta">{note.data.topic}</div>
+          <a href={`/notabelajar/${note.id}`} class="note-item">
+            <div style="flex:1;">
+              <div class="note-item-title">{note.data.title}</div>
+              <div class="note-item-meta">{note.data.topic}</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--w-color-primary-30);">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
           </a>
         ))}
       </div>
     </div>
   ))}
 
-  {notes.length === 0 && (
-    <p style="color:var(--text-muted);padding:2rem;text-align:center;">
+  {filteredNotes.length === 0 && (
+    <p style="color:var(--w-color-primary-30);text-align:center;padding:3rem 0;background:white;border-radius:12px;border:1px solid var(--w-color-primary-50);">
       Belum ada nota untuk subjek ini. Nota akan ditambah dari masa ke semasa.
     </p>
   )}
+
+  <div style="margin-top:2rem;">
+    <a href={`/notabelajar/${levelPath}`} style="color:var(--w-color-info);text-decoration:none;font-weight:500;font-size:0.9rem;">
+      ← Kembali ke {levelName}
+    </a>
+  </div>
+
+  <style>
+    .note-item {
+      display: flex;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--w-color-primary-50);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .note-item:hover {
+      border-color: var(--w-color-info);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .note-item-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--w-color-primary);
+    }
+    .note-item-meta {
+      font-size: 0.82rem;
+      color: var(--w-color-primary-30);
+      margin-top: 0.15rem;
+    }
+  </style>
 </BaseLayout>

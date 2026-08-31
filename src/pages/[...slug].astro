@@ -15,43 +15,104 @@ const data = entry.data;
 const { Content } = await render(entry);
 const levelName = data.level === 'sk' ? 'Sekolah Rendah' : 'Sekolah Menengah';
 const levelPath = data.level === 'sk' ? 'sk' : 'smk';
+const levelLabel = data.level === 'sk' ? 'SK' : 'SMK';
+const levelColor = data.level === 'sk' ? '#059669' : '#d97706';
+const yearLabel = data.level === 'sk' ? `Tahun ${data.year}` : `Tingkatan ${data.year}`;
+
+const allNotes = await getCollection('notes');
+const relatedNotes = allNotes.filter(
+  n => n.data.subject === data.subject && n.data.level === data.level && n.id !== entry.id
+);
 ---
 
-<BaseLayout title="{data.title} — NotaBelajar">
-  <div class="breadcrumb">
-    <a href="/notabelajar/">Laman Utama</a> /
-    <a href={`/notabelajar/${levelPath}`}>{levelName}</a> /
-    <a href={`/notabelajar/${levelPath}/${data.subject}`}>{data.subject}</a> /
-    {data.title}
+<BaseLayout
+  title="{data.title}"
+  description={data.description}
+  breadcrumbs={[
+    { label: 'Laman Utama', href: '/notabelajar/' },
+    { label: levelName, href: `/notabelajar/${levelPath}` },
+    { label: data.subject, href: `/notabelajar/${levelPath}/${data.subject}` },
+    { label: data.title },
+  ]}
+>
+  <!-- Meta bar -->
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;margin-bottom:1.5rem;">
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.2rem 0.6rem;border-radius:6px;font-size:0.78rem;font-weight:600;color:white;background:{levelColor};">
+      {levelLabel}
+    </span>
+    <span style="display:inline-flex;align-items:center;gap:0.25rem;font-size:0.85rem;color:var(--w-color-primary-30);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      {yearLabel}
+    </span>
+    <span style="display:inline-flex;align-items:center;gap:0.25rem;font-size:0.85rem;color:var(--w-color-primary-30);">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      {data.pubDate.toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' })}
+    </span>
   </div>
 
-  <div style="margin-bottom:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
-    <span class="level-badge {data.level}">{data.level.toUpperCase()}</span>
-    <span style="font-size:0.9rem;color:var(--text-muted);">
-      {data.level === 'sk' ? `Tahun ${data.year}` : `Tingkatan ${data.year}`}
-    </span>
-    <span style="font-size:0.9rem;color:var(--text-muted);">
-      Terbit: {data.pubDate.toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' })}
-    </span>
-  </div>
+  <p style="color:var(--w-color-primary-30);margin-bottom:1.5rem;font-size:0.95rem;">
+    {data.description}
+  </p>
 
-  <h1>{data.title}</h1>
-  <p style="color:var(--text-muted);margin-bottom:1.5rem;">{data.description}</p>
-
+  <!-- Tags -->
   {data.tags && data.tags.length > 0 && (
-    <div style="margin-bottom:1.5rem;display:flex;gap:0.4rem;flex-wrap:wrap;">
-      {data.tags.map(tag => <span style="background:var(--bg-alt);padding:0.15rem 0.5rem;border-radius:4px;font-size:0.8rem;color:var(--text-muted);border:1px solid var(--border);">#{tag}</span>)}
+    <div style="display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+      {data.tags.map(tag => (
+        <span class="tag">#{tag}</span>
+      ))}
     </div>
   )}
 
-  <article style="margin-top:2rem;line-height:1.8;font-size:1.05rem;">
-    <Content />
-  </article>
+  <!-- Note content -->
+  <div style="background:white;border:1px solid var(--w-color-primary-50);border-radius:14px;padding:2rem 2.25rem;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+    <article class="note-content">
+      <Content />
+    </article>
+  </div>
 
-  <div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);">
-
-    <a href={`/notabelajar/${levelPath}/${data.subject}`} style="color:var(--primary);">
-      ← Kembali ke {data.subject}
+  <!-- Navigation -->
+  <div style="margin-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+    <a href={`/notabelajar/${levelPath}/${data.subject}`} style="display:inline-flex;align-items:center;gap:0.3rem;color:var(--w-color-info);text-decoration:none;font-weight:500;font-size:0.9rem;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+      Kembali ke {data.subject}
     </a>
   </div>
+
+  <!-- Related notes -->
+  {relatedNotes.length > 0 && (
+    <div style="margin-top:2.5rem;">
+      <h3 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.75rem;">Nota lain dalam subjek ini</h3>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        {relatedNotes.slice(0, 4).map(note => (
+          <a href={`/notabelajar/${note.id}`} class="related-item">
+            <div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--w-color-primary);">{note.data.title}</div>
+              <div style="font-size:0.8rem;color:var(--w-color-primary-30);">
+                {note.data.level === 'sk' ? `Tahun ${note.data.year}` : `Tingkatan ${note.data.year}`} · {note.data.topic}
+              </div>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--w-color-primary-30);"><path d="M9 18l6-6-6-6"/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <style>
+    .related-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid var(--w-color-primary-50);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s;
+    }
+    .related-item:hover {
+      border-color: var(--w-color-info);
+    }
+  </style>
 </BaseLayout>

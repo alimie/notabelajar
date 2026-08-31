@@ -1,0 +1,49 @@
+$fontTypes: (
+    'regular': ('Inter', system-ui, -apple-system, sans-serif),
+    'bold': ('Plus Jakarta Sans', 'Inter', system-ui, sans-serif),
+) !default;
+
+$fontSizes: (
+    'xs': 11px,
+    'sm': 12px,
+    'md': 14px,
+    'default': 16px,
+    'lg': 18px,
+    'xl': 21px,
+    '2xl': 24px,
+    '3xl': 30px,
+    '4xl': 36px,
+    '5xl': 42px,
+) !default;
+
+$lineHeights: (
+    'normal': 1.6,
+    'hmd': 1.6,
+    'hlg': 1.75,
+) !default;
+
+$disableAnimations: false !default;
+
+$spacing: (
+    'none': 0,
+    'xxs': 2px,
+    'xs': 5px,
+    'sm': 10px,
+    'md': 15px,
+    'default': 20px,
+    'lg': 25px,
+    'xl': 30px,
+    '2xl': 35px,
+    '3xl': 40px,
+    '4xl': 45px,
+    '5xl': 50px,
+) !default;
+
+$radius: (
+    'none': 0,
+    'sm': 4px,
+    'md': 8px,
+    'lg': 12px,
+    'xl': 16px,
+    'max': 100%,
+) !default;

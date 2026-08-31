@@ -1,7 +1,1 @@
-import { defineConfig } from 'astro/config';
-
-// https://astro.build/config
-export default defineConfig({
-  site: 'https://alimie.github.io',
-  base: '/notabelajar',
-});
+import { webcore } from 'webcoreui/integration';import { defineConfig } from 'astro/config';// https://astro.build/configexport default defineConfig({  site: 'https://alimie.github.io',  base: '/notabelajar',  integrations: [webcore()]});
