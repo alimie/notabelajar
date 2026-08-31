@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  const paths = new Map();
+  for (const note of notes) {
+    const key = `${note.data.level}/${note.data.subject}`;
+    if (!paths.has(key)) paths.set(key, { level: note.data.level, subject: note.data.subject });
+  }
+  return [...paths.values()].map(({ level, subject }) => ({
+    params: { level, subject },
+  }));
+}
+
+const { level, subject } = Astro.params;
+const allNotes = await getCollection('notes');
+const notes = allNotes.filter(n => n.data.level === level && n.data.subject === subject);
+
+const levelName = level === 'sk' ? 'Sekolah Rendah' : 'Sekolah Menengah';
+const levelTitle = level === 'sk' ? 'SK' : 'SMK';
+const subjectName = subject.charAt(0).toUpperCase() + subject.slice(1).replace(/-/g, ' ');
+
+// Group by year
+const byYear = {};
+for (const note of notes) {
+  const year = note.data.year;
+  if (!byYear[year]) byYear[year] = [];
+  byYear[year].push(note);
+}
+const years = Object.keys(byYear).sort();
+---
+
+<BaseLayout title="{subjectName} — {levelName} — NotaBelajar">
+  <div class="breadcrumb">
+    <a href="/notabelajar/">Laman Utama</a> /
+    <a href={`/notabelajar/${level}`}>{levelName}</a> /
+    {subjectName}
+  </div>
+
+  <h1>{subjectName}</h1>
+  <p style="color:var(--text-muted);margin-bottom:1rem;">
+    <span class="level-badge {level}">{levelTitle}</span>
+    <span style="margin-left:0.5rem;">{notes.length} nota</span>
+  </p>
+
+  {years.map(year => (
+    <div style="margin-top:1.5rem;">
+      <h2 style="font-size:1.2rem;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:0.3rem;">
+        {level === 'sk' ? `Tahun ${year}` : `Tingkatan ${year}`}
+      </h2>
+      <div style="margin-top:0.75rem;">
+        {byYear[year].map(note => (
+          <a href={`/notabelajar/${note.id}`} class="card" style="margin-bottom:0.5rem;">
+            <h3 style="font-size:1rem;">{note.data.title}</h3>
+            <div class="meta">{note.data.topic}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  ))}
+
+  {notes.length === 0 && (
+    <p style="color:var(--text-muted);padding:2rem;text-align:center;">
+      Belum ada nota untuk subjek ini. Nota akan ditambah dari masa ke semasa.
+    </p>
+  )}
+</BaseLayout>

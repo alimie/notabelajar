@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "sk",
+        "smk"
+      ]
+    },
+    "year": {
+      "type": "string"
+    },
+    "topic": {
+      "type": "string"
+    },
+    "pubDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "author": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "subject",
+    "level",
+    "year",
+    "topic",
+    "pubDate"
+  ]
+}

@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map(note => ({
+    params: { slug: note.id },
+    props: { entry: note },
+  }));
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+const { Content } = await render(entry);
+const levelName = data.level === 'sk' ? 'Sekolah Rendah' : 'Sekolah Menengah';
+const levelPath = data.level === 'sk' ? 'sk' : 'smk';
+---
+
+<BaseLayout title="{data.title} — NotaBelajar">
+  <div class="breadcrumb">
+    <a href="/notabelajar/">Laman Utama</a> /
+    <a href={`/notabelajar/${levelPath}`}>{levelName}</a> /
+    <a href={`/notabelajar/${levelPath}/${data.subject}`}>{data.subject}</a> /
+    {data.title}
+  </div>
+
+  <div style="margin-bottom:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+    <span class="level-badge {data.level}">{data.level.toUpperCase()}</span>
+    <span style="font-size:0.9rem;color:var(--text-muted);">
+      {data.level === 'sk' ? `Tahun ${data.year}` : `Tingkatan ${data.year}`}
+    </span>
+    <span style="font-size:0.9rem;color:var(--text-muted);">
+      Terbit: {data.pubDate.toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' })}
+    </span>
+  </div>
+
+  <h1>{data.title}</h1>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">{data.description}</p>
+
+  {data.tags && data.tags.length > 0 && (
+    <div style="margin-bottom:1.5rem;display:flex;gap:0.4rem;flex-wrap:wrap;">
+      {data.tags.map(tag => <span style="background:var(--bg-alt);padding:0.15rem 0.5rem;border-radius:4px;font-size:0.8rem;color:var(--text-muted);border:1px solid var(--border);">#{tag}</span>)}
+    </div>
+  )}
+
+  <article style="margin-top:2rem;line-height:1.8;font-size:1.05rem;">
+    <Content />
+  </article>
+
+  <div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+
+    <a href={`/notabelajar/${levelPath}/${data.subject}`} style="color:var(--primary);">
+      ← Kembali ke {data.subject}
+    </a>
+  </div>
+</BaseLayout>

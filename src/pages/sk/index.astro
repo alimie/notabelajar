@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allNotes = await getCollection('notes');
+const skNotes = allNotes.filter(n => n.data.level === 'sk');
+const subjects = [...new Set(skNotes.map(n => n.data.subject))];
+
+const subjectInfo = {
+  'bm': { name: 'Bahasa Melayu', icon: '🇲🇾' },
+  'english': { name: 'English', icon: '🇬🇧' },
+  'matematik': { name: 'Matematik', icon: '🔢' },
+  'sains': { name: 'Sains', icon: '🔬' },
+  'sejarah': { name: 'Sejarah', icon: '📜' },
+};
+---
+
+<BaseLayout title="Sekolah Rendah — NotaBelajar">
+  <div class="breadcrumb">
+    <a href="/notabelajar/">Laman Utama</a> / Sekolah Rendah
+  </div>
+
+  <h1>🏫 Sekolah Rendah (SK)</h1>
+  <p style="color:var(--text-muted);margin-bottom:2rem;">
+    Nota untuk Tahun 1 hingga Tahun 6 — pelbagai subjek.
+    ({skNotes.length} nota tersedia)
+  </p>
+
+  <div class="card-grid">
+    {subjects.map(subject => {
+      const info = subjectInfo[subject] || { name: subject, icon: '📖' };
+      const notes = skNotes.filter(n => n.data.subject === subject);
+      return (
+        <a href={`/notabelajar/sk/${subject}`} class="card">
+          <h3>{info.icon} {info.name}</h3>
+          <div class="meta">{notes.length} nota — Tahun {[...new Set(notes.map(n => n.data.year))].sort().join(', ')}</div>
+        </a>
+      );
+    })}
+  </div>
+</BaseLayout>

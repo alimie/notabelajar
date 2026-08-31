@@ -1,0 +1,141 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | NotaBelajar</title>
+    <meta name="description" content={description || 'Nota pembelajaran sekolah Malaysia'} />
+    <link rel="icon" type="image/svg+xml" href="/notabelajar/favicon.svg" />
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-light: #3b82f6;
+        --primary-dark: #1d4ed8;
+        --bg: #ffffff;
+        --bg-alt: #f8fafc;
+        --text: #1e293b;
+        --text-muted: #64748b;
+        --border: #e2e8f0;
+        --sk-color: #059669;
+        --smk-color: #d97706;
+        --radius: 8px;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+
+      nav {
+        background: var(--primary);
+        color: white;
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.3rem;
+      }
+
+      nav .subtitle {
+        font-size: 0.85rem;
+        opacity: 0.8;
+        margin-top: 0.2rem;
+      }
+
+      main {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      h1 { font-size: 2rem; margin-bottom: 1rem; color: var(--primary-dark); }
+      h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+      h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--border);
+        margin-top: 3rem;
+      }
+
+      .level-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: white;
+      }
+
+      .level-badge.sk { background: var(--sk-color); }
+      .level-badge.smk { background: var(--smk-color); }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        transition: box-shadow 0.2s, transform 0.2s;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        background: var(--bg);
+      }
+
+      .card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+      }
+
+      .card h3 { margin-top: 0; font-size: 1.1rem; }
+      .card .meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+      .breadcrumb {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-muted);
+      }
+      .breadcrumb a { color: var(--primary); text-decoration: none; }
+      .breadcrumb a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/notabelajar/">📝 NotaBelajar</a>
+      <div class="subtitle">Nota Pembelajaran Malaysia — SK & SMK</div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>NotaBelajar — Nota pembelajaran untuk pelajar Malaysia</p>
+      <p style="margin-top:0.5rem;font-size:0.8rem;">Dikemaskini secara berkala</p>
+    </footer>
+  </body>
+</html>
