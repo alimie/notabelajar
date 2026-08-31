@@ -1,4 +1,7 @@
 ---
+import { Menu, Footer } from 'webcoreui/astro';
+import 'webcoreui/styles';
+
 export interface Props {
   title: string;
   description?: string;
@@ -6,10 +9,61 @@ export interface Props {
 }
 
 const { title, description, breadcrumbs } = Astro.props;
+
+// ── Active state untuk menu berdasarkan URL ──
+const currentPath = Astro.url.pathname;
+
+const menuItems = [
+  { href: '/notabelajar/', name: 'Utama', active: currentPath === '/notabelajar/' },
+  { href: '/notabelajar/sk', name: 'Sekolah Rendah', active: currentPath.startsWith('/notabelajar/sk') },
+  { href: '/notabelajar/smk', name: 'Sekolah Menengah', active: currentPath.startsWith('/notabelajar/smk') },
+];
+
+// ── Footer columns ──
+const footerColumns = [
+  {
+    title: '🏫 Peringkat',
+    items: [
+      { href: '/notabelajar/sk', name: 'Sekolah Rendah (SK)' },
+      { href: '/notabelajar/smk', name: 'Sekolah Menengah (SMK)' },
+    ],
+  },
+  {
+    title: '📚 Subjek Popular',
+    items: [
+      { href: '/notabelajar/sk/matematik', name: 'Matematik SK' },
+      { href: '/notabelajar/sk/sains', name: 'Sains SK' },
+      { href: '/notabelajar/smk/sains', name: 'Sains SMK' },
+      { href: '/notabelajar/smk/sejarah', name: 'Sejarah SMK' },
+    ],
+  },
+  {
+    title: '🔗 Pautan',
+    items: [
+      { href: '/notabelajar/', name: 'Laman Utama' },
+      { href: 'https://github.com/alimie/notabelajar', name: 'GitHub', target: '_blank' as const },
+    ],
+  },
+];
+
+const logoHtml = `<span style="display:flex;align-items:center;gap:0.6rem;">
+  <span style="font-size:1.5rem;line-height:1;">📝</span>
+  <div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-0.02em;background:linear-gradient(135deg,#1e40af,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">NotaBelajar</div>
+    <div style="font-size:0.7rem;opacity:0.6;margin-top:-2px;font-weight:500;">Nota Pembelajaran Malaysia</div>
+  </div>
+</span>`;
+
+const footerLogoHtml = `<span style="display:flex;align-items:center;gap:0.6rem;">
+  <span style="font-size:1.3rem;line-height:1;">📝</span>
+  <div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-0.02em;background:linear-gradient(135deg,#1e40af,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">NotaBelajar</div>
+  </div>
+</span>`;
 ---
 
 <!doctype html>
-<html lang="ms">
+<html lang="ms" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,6 +80,9 @@ const { title, description, breadcrumbs } = Astro.props;
     />
 
     <style>
+      /* ═══════════════════════════════════════
+         CSS Variables & Theme
+         ═══════════════════════════════════════ */
       :root {
         --w-color-primary: hsl(0, 0%, 5%);
         --w-color-primary-10: hsl(0, 0%, 12%);
@@ -47,12 +104,13 @@ const { title, description, breadcrumbs } = Astro.props;
         --w-color-alert: hsl(0, 70%, 40%);
         --w-color-alert-accent: hsl(0, 72%, 50%);
         --w-color-alert-fg: hsl(0, 0%, 100%);
-        --w-color-overlay: hsla(0, 0%, 0%, 0.5);
+        --w-color-overlay: hsla(0, 0%, 0%, 0.35);
         --sk: #059669;
-        --sk-light: #d1fae5;
         --smk: #d97706;
-        --smk-light: #fef3c7;
+        --header-height: 64px;
       }
+
+      html { scroll-behavior: smooth; }
 
       * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -66,90 +124,124 @@ const { title, description, breadcrumbs } = Astro.props;
         flex-direction: column;
       }
 
-      /* ── Header / Nav ── */
-      .site-header {
-        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-        color: white;
-        padding: 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+      /* ═══════════════════════════════════════
+         Override WebcoreUI Menu — Glassmorphism
+         ═══════════════════════════════════════ */
+      header[data-webcore-menu] {
+        background: rgba(255, 255, 255, 0.85) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+        padding: 0.7rem 1rem !important;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04) !important;
       }
 
-      .site-header-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.75rem 1.5rem;
+      header[data-webcore-menu] ul {
+        background: transparent !important;
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: all !important;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 0.25rem !important;
+        box-shadow: none !important;
+        transform: none !important;
       }
 
-      .site-header .logo-area {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
-        color: white;
+      header[data-webcore-menu] ul li a {
+        font-size: 0.85rem !important;
+        font-weight: 500 !important;
+        padding: 0.45rem 1rem !important;
+        border-radius: 8px !important;
+        color: var(--w-color-primary-20) !important;
+        transition: all 0.2s ease !important;
+        position: relative !important;
       }
 
-      .site-header .logo-area .logo-icon {
-        font-size: 1.5rem;
-        line-height: 1;
+      header[data-webcore-menu] ul li a:hover {
+        background: var(--w-color-primary-60) !important;
+        color: var(--w-color-primary) !important;
       }
 
-      .site-header .logo-text {
-        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-        font-weight: 700;
-        font-size: 1.3rem;
-        letter-spacing: -0.02em;
+      header[data-webcore-menu] ul li a.active {
+        background: linear-gradient(135deg, rgba(30, 64, 175, 0.08), rgba(59, 130, 246, 0.08)) !important;
+        color: #1e40af !important;
+        font-weight: 600 !important;
       }
 
-      .site-header .logo-sub {
-        font-size: 0.75rem;
-        opacity: 0.75;
-        margin-top: -2px;
-        font-weight: 500;
+      /* ── Hamburger button ── */
+      header[data-webcore-menu] button[data-id="hamburger"] {
+        display: none !important;
       }
 
-      .site-header .nav-links {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
+      /* ── Mobile: slide-in menu ── */
+      @media (max-width: 799px) {
+        header[data-webcore-menu] {
+          padding: 0.6rem 1rem !important;
+        }
+
+        header[data-webcore-menu] button[data-id="hamburger"] {
+          display: block !important;
+          z-index: 999 !important;
+        }
+
+        header[data-webcore-menu] ul {
+          position: fixed !important;
+          top: 0 !important;
+          left: auto !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          width: min(320px, 85vw) !important;
+          flex-direction: column !important;
+          gap: 0.25rem !important;
+          padding: 5rem 1.5rem 2rem !important;
+          background: rgba(255, 255, 255, 0.98) !important;
+          backdrop-filter: blur(20px) !important;
+          -webkit-backdrop-filter: blur(20px) !important;
+          box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1) !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          pointer-events: none !important;
+          transition: opacity 0.35s ease, visibility 0.35s ease !important;
+          z-index: 100 !important;
+        }
+
+        header[data-webcore-menu][data-active="true"] ul {
+          opacity: 1 !important;
+          visibility: visible !important;
+          pointer-events: all !important;
+        }
+
+        header[data-webcore-menu] ul li a {
+          font-size: 1rem !important;
+          padding: 0.7rem 1rem !important;
+          border-radius: 10px !important;
+        }
+
+        header[data-webcore-menu] ul li a.active {
+          background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(59, 130, 246, 0.1)) !important;
+        }
       }
 
-      .site-header .nav-links a {
-        color: white;
-        text-decoration: none;
-        font-size: 0.85rem;
-        font-weight: 500;
-        padding: 0.4rem 0.85rem;
-        border-radius: 8px;
-        transition: background 0.2s;
-      }
-
-      .site-header .nav-links a:hover {
-        background: rgba(255,255,255,0.15);
-      }
-
-      .nav-special {
-        opacity: 0.7;
-        font-size: 0.8rem;
-      }
-
-      /* ── Main content ── */
+      /* ═══════════════════════════════════════
+         Main Content
+         ═══════════════════════════════════════ */
       main {
         flex: 1;
         max-width: 1100px;
         margin: 0 auto;
         padding: 2rem 1.5rem;
         width: 100%;
+        animation: fadeInUp 0.4s ease;
       }
 
-      .page-header {
-        margin-bottom: 2rem;
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
       }
+
+      .page-header { margin-bottom: 2rem; }
 
       .page-header h1 {
         font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -160,13 +252,36 @@ const { title, description, breadcrumbs } = Astro.props;
         margin-top: 0.25rem;
       }
 
-      /* ── Article content ── */
+      /* ── Breadcrumb ── */
+      .breadcrumb-nav {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        color: var(--w-color-primary-30);
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .breadcrumb-nav a {
+        color: var(--w-color-info);
+        text-decoration: none;
+        font-weight: 500;
+        transition: opacity 0.2s;
+      }
+      .breadcrumb-nav a:hover { opacity: 0.75; }
+      .breadcrumb-sep {
+        color: var(--w-color-primary-40);
+        font-size: 0.65rem;
+      }
+
+      /* ═══════════════════════════════════════
+         Note Content
+         ═══════════════════════════════════════ */
       .note-content {
         line-height: 1.8;
         font-size: 1rem;
         color: var(--w-color-primary-10);
       }
-
       .note-content h2 {
         font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
         font-weight: 700;
@@ -177,7 +292,6 @@ const { title, description, breadcrumbs } = Astro.props;
         border-bottom: 2px solid var(--w-color-primary-50);
         color: var(--w-color-primary);
       }
-
       .note-content h3 {
         font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
         font-weight: 600;
@@ -186,20 +300,12 @@ const { title, description, breadcrumbs } = Astro.props;
         margin-bottom: 0.5rem;
         color: var(--w-color-primary-10);
       }
-
-      .note-content p {
-        margin-bottom: 1rem;
-      }
-
+      .note-content p { margin-bottom: 1rem; }
       .note-content ul, .note-content ol {
         margin-bottom: 1rem;
         padding-left: 1.5rem;
       }
-
-      .note-content li {
-        margin-bottom: 0.3rem;
-      }
-
+      .note-content li { margin-bottom: 0.3rem; }
       .note-content blockquote {
         border-left: 3px solid var(--w-color-info);
         background: var(--w-color-primary-60);
@@ -209,14 +315,12 @@ const { title, description, breadcrumbs } = Astro.props;
         color: var(--w-color-primary-10);
         font-style: italic;
       }
-
       .note-content code {
         background: var(--w-color-primary-60);
         padding: 0.15rem 0.4rem;
         border-radius: 4px;
         font-size: 0.9em;
       }
-
       .note-content pre {
         background: var(--w-color-primary-60);
         padding: 1rem;
@@ -225,14 +329,12 @@ const { title, description, breadcrumbs } = Astro.props;
         margin-bottom: 1rem;
         font-size: 0.9rem;
       }
-
       .note-content table {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 1rem;
         font-size: 0.92rem;
       }
-
       .note-content th {
         background: var(--w-color-primary-60);
         font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -240,18 +342,15 @@ const { title, description, breadcrumbs } = Astro.props;
         text-align: left;
         padding: 0.6rem 0.75rem;
       }
-
       .note-content td {
         padding: 0.5rem 0.75rem;
         border-bottom: 1px solid var(--w-color-primary-50);
       }
-
       .note-content strong {
         font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
         font-weight: 600;
         color: var(--w-color-primary);
       }
-
       .note-content hr {
         border: 0;
         height: 1px;
@@ -276,46 +375,170 @@ const { title, description, breadcrumbs } = Astro.props;
         color: var(--w-color-primary-10);
       }
 
-      /* ── Responsive ── */
+      /* ═══════════════════════════════════════
+         Override WebcoreUI Footer
+         ═══════════════════════════════════════ */
+      footer[data-webcore-footer] {
+        border-top: 1px solid var(--w-color-primary-50) !important;
+        background: white !important;
+        padding: 2.5rem 1rem 1.5rem !important;
+      }
+
+      footer[data-webcore-footer] .container {
+        max-width: 1100px !important;
+        margin: 0 auto !important;
+      }
+
+      footer[data-webcore-footer] .wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+      }
+
+      footer[data-webcore-footer] .columns {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+      }
+
+      footer[data-webcore-footer] .column-title {
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 0.85rem !important;
+        color: var(--w-color-primary) !important;
+        margin-bottom: 0.75rem !important;
+        display: block !important;
+      }
+
+      footer[data-webcore-footer] .column {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      footer[data-webcore-footer] .column li {
+        margin-bottom: 0.4rem !important;
+      }
+
+      footer[data-webcore-footer] .column a {
+        color: var(--w-color-primary-30) !important;
+        text-decoration: none !important;
+        font-size: 0.85rem !important;
+        transition: color 0.2s ease !important;
+      }
+
+      footer[data-webcore-footer] .column a:hover {
+        color: var(--w-color-info) !important;
+        text-decoration: none !important;
+      }
+
+      footer[data-webcore-footer] .subtext {
+        border-top: 1px solid var(--w-color-primary-50) !important;
+        margin-top: 2rem !important;
+        padding-top: 1.25rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+
+      footer[data-webcore-footer] .subtext span {
+        font-size: 0.82rem !important;
+        color: var(--w-color-primary-30) !important;
+      }
+
+      @media (min-width: 800px) {
+        footer[data-webcore-footer] .wrapper {
+          flex-direction: row !important;
+          align-items: flex-start !important;
+        }
+        footer[data-webcore-footer] .columns {
+          flex-direction: row !important;
+          gap: 3rem !important;
+          margin-left: auto !important;
+        }
+        footer[data-webcore-footer] .subtext {
+          flex-direction: row !important;
+          justify-content: space-between !important;
+          text-align: left !important;
+        }
+      }
+
+      /* ═══════════════════════════════════════
+         Back-to-Top Button
+         ═══════════════════════════════════════ */
+      .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #1e40af, #3b82f6);
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(30, 64, 175, 0.3);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition: all 0.3s ease;
+        z-index: 50;
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .back-to-top:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 24px rgba(30, 64, 175, 0.4);
+      }
+      .back-to-top svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* ═══════════════════════════════════════
+         Scroll Reveal Animations
+         ═══════════════════════════════════════ */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       @media (max-width: 640px) {
-        .site-header-inner { padding: 0.6rem 1rem; }
-        .site-header .logo-text { font-size: 1.1rem; }
-        .site-header .nav-links a { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
         main { padding: 1.25rem 1rem; }
         .page-header h1 { font-size: 1.4rem; }
+        .back-to-top { bottom: 1.25rem; right: 1.25rem; width: 40px; height: 40px; }
       }
     </style>
   </head>
   <body>
-    <header class="site-header">
-      <div class="site-header-inner">
-        <a href="/notabelajar/" class="logo-area">
-          <span class="logo-icon">📝</span>
-          <div>
-            <div class="logo-text">NotaBelajar</div>
-            <div class="logo-sub">Nota Pembelajaran Malaysia</div>
-          </div>
-        </a>
-        <nav class="nav-links">
-          <a href="/notabelajar/sk">SK</a>
-          <a href="/notabelajar/smk">SMK</a>
-          <span class="nav-special">|</span>
-          <a href="https://github.com/alimie/notabelajar" target="_blank" rel="noopener">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:2px;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.66-3.795-1.485-4.035-1.485-.675-1.71-1.65-2.175-1.65-2.175-1.35-.915.105-.915.105-.915 1.485.105 2.265 1.53 2.265 1.53 1.32 2.25 3.465 1.605 4.32 1.23.135-.96.51-1.605.93-1.965-3.33-.36-6.825-1.665-6.825-7.41 0-1.635.585-2.97 1.545-4.02-.15-.36-.675-1.89.15-3.93 0 0 1.26-.405 4.125 1.53 1.2-.33 2.475-.495 3.75-.495s2.55.165 3.75.495c2.865-1.92 4.125-1.53 4.125-1.53.825 2.04.3 3.57.15 3.93.96 1.05 1.545 2.385 1.545 4.02 0 5.76-3.51 7.035-6.84 7.41.54.465 1.02 1.38 1.02 2.775 0 2.01-.015 3.615-.015 3.945 0 .315.225.69.825.57C20.565 21.795 24 17.31 24 12 24 5.37 18.63 0 12 0z"/></svg>
-            GitHub
-          </a>
-        </nav>
-      </div>
-    </header>
+    <!-- WebcoreUI Menu — glassmorphism header + mobile slide-in drawer -->
+    <Menu
+      logo:html={logoHtml}
+      items={menuItems}
+      data-webcore-menu
+    />
 
     <main>
       {breadcrumbs && breadcrumbs.length > 0 && (
-        <nav style="font-size:0.85rem;margin-bottom:1rem;color:var(--w-color-primary-30);display:flex;gap:0.4rem;align-items:center;flex-wrap:wrap;">
+        <nav class="breadcrumb-nav">
           {breadcrumbs.map((crumb, i) => (
             <>
-              {i > 0 && <span style="color:var(--w-color-primary-40);font-size:0.7rem;">▸</span>}
+              {i > 0 && <span class="breadcrumb-sep">▸</span>}
               {crumb.href ? (
-                <a href={crumb.href} style="color:var(--w-color-info);text-decoration:none;font-weight:500;">{crumb.label}</a>
+                <a href={crumb.href}>{crumb.label}</a>
               ) : (
                 <span style="color:var(--w-color-primary-20);">{crumb.label}</span>
               )}
@@ -332,22 +555,57 @@ const { title, description, breadcrumbs } = Astro.props;
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer style="background:var(--w-color-primary-60);border-top:1px solid var(--w-color-primary-50);padding:2rem 1.5rem;text-align:center;">
-      <div style="max-width:1100px;margin:0 auto;">
-        <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;">
-          <a href="/notabelajar/" style="color:var(--w-color-info);text-decoration:none;font-size:0.85rem;font-weight:500;">Laman Utama</a>
-          <a href="/notabelajar/sk" style="color:var(--w-color-info);text-decoration:none;font-size:0.85rem;font-weight:500;">SK</a>
-          <a href="/notabelajar/smk" style="color:var(--w-color-info);text-decoration:none;font-size:0.85rem;font-weight:500;">SMK</a>
-          <a href="https://github.com/alimie/notabelajar" target="_blank" rel="noopener" style="color:var(--w-color-info);text-decoration:none;font-size:0.85rem;font-weight:500;">GitHub</a>
-        </div>
-        <p style="color:var(--w-color-primary-30);font-size:0.85rem;">
-          NotaBelajar — Nota pembelajaran untuk pelajar Malaysia
-        </p>
-        <p style="color:var(--w-color-primary-40);font-size:0.75rem;margin-top:0.3rem;">
-          Dikemaskini secara berkala • Dibina dengan Astro + WebcoreUI
-        </p>
-      </div>
-    </footer>
+    <!-- WebcoreUI Footer — premium multi-column -->
+    <Footer
+      logo:html={footerLogoHtml}
+      columns={footerColumns}
+      subText="NotaBelajar — Nota pembelajaran untuk pelajar Malaysia. Dibina dengan Astro + WebcoreUI."
+      data-webcore-footer
+    />
+
+    <!-- Back-to-Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 15l-6-6-6 6"/>
+      </svg>
+    </button>
+
+    <script>
+      // ── Back-to-Top ──
+      const backToTop = document.getElementById('backToTop');
+      let ticking = false;
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            backToTop.classList.toggle('visible', window.scrollY > 300);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // ── Scroll Reveal ──
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document.addEventListener('astro:after-swap', () => {
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+      });
+
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
   </body>
 </html>

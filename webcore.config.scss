@@ -47,3 +47,31 @@ $radius: (
     'xl': 16px,
     'max': 100%,
 ) !default;
+
+// Custom theme colours untuk NotaBelajar
+$themes: (
+    light: (
+        scheme: light,
+        primary: hsl(0, 0%, 5%),
+        primary-10: hsl(0, 0%, 12%),
+        primary-20: hsl(0, 0%, 25%),
+        primary-30: hsl(0, 0%, 44%),
+        primary-40: hsl(0, 0%, 68%),
+        primary-50: hsl(0, 0%, 80%),
+        primary-60: hsl(0, 0%, 92%),
+        primary-70: hsl(0, 0%, 97%),
+        info: hsl(200, 100%, 42%),
+        info-accent: hsl(200, 100%, 50%),
+        info-fg: hsl(0, 0%, 100%),
+        success: hsl(155, 60%, 36%),
+        success-accent: hsl(155, 65%, 45%),
+        success-fg: hsl(0, 0%, 100%),
+        warning: hsl(32, 100%, 40%),
+        warning-accent: hsl(32, 100%, 50%),
+        warning-fg: hsl(0, 0%, 100%),
+        alert: hsl(0, 72%, 40%),
+        alert-accent: hsl(0, 72%, 50%),
+        alert-fg: hsl(0, 0%, 100%),
+        overlay: hsla(0, 0%, 0%, 0.35),
+    ),
+) !default;
