@@ -1,5 +1,5 @@
 ---
-title: "Pengenalan kepada Fractions"
+title: "Pengenalan Kepada Pecahan"
 description: "Nota asas tentang pecahan (fractions) termasuk jenis pecahan, operasi asas, dan contoh."
 subject: matematik
 level: sk
