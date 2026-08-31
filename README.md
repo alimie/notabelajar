@@ -1,43 +1,74 @@
-# Astro Starter Kit: Minimal
+# 📝 NotaBelajar
 
-```sh
-npm create astro@latest -- --template minimal
+Nota pembelajaran untuk pelajar sekolah rendah (SK) dan menengah (SMK) Malaysia.
+
+## Struktur
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
+src/
+├── content/
+│   └── notes/
+│       ├── sk/               # Sekolah Rendah (Tahun 1-6)
+│       │   ├── bm/           # Bahasa Melayu
+│       │   ├── english/      # English
+│       │   ├── matematik/    # Matematik
+│       │   ├── sains/        # Sains
+│       │   └── sejarah/      # Sejarah
+│       └── smk/              # Sekolah Menengah (Tingkatan 1-5)
+│           ├── bm/
+│           ├── english/
+│           ├── matematik/
+│           ├── sains/
+│           ├── sejarah/
+│           ├── geografi/
+│           ├── fizik/
+│           ├── kimia/
+│           ├── biologi/
+│           └── matematik-tambahan/
+├── layouts/
+│   └── BaseLayout.astro
+├── pages/
+│   ├── index.astro
+│   ├── [...slug].astro
+│   ├── [level]/
+│   │   └── [subject].astro
+│   ├── sk/
+│   │   └── index.astro
+│   └── smk/
 │       └── index.astro
-└── package.json
+└── content.config.ts
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Tambah Nota Baru
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+1. Buat fail `.md` dalam folder subjek yang sesuai:
+   `src/content/notes/<level>/<subject>/nama-nota.md`
 
-Any static assets, like images, can be placed in the `public/` directory.
+2. Set frontmatter:
+   ```yaml
+   ---
+   title: "Nama Nota"
+   description: "Penerangan ringkas"
+   subject: matematik
+   level: sk        # atau smk
+   year: "1"
+   topic: "Topik"
+   pubDate: 2026-01-15
+   tags:
+     - tag1
+     - tag2
+   ---
+   ```
 
-## 🧞 Commands
+3. Tulis kandungan dalam Markdown
 
-All commands are run from the root of the project, from a terminal:
+4. Commit dan push — auto-deploy ke Pages
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Tech Stack
 
-## 👀 Want to learn more?
+- [Astro](https://astro.build) — Static site generator
+- Content Collections — Structured notes management
+- GitHub Pages — Hosting
+- [Kapa.ai](https://kapa.ai) — Astro Docs MCP backend
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Dihasilkan dengan 🐱 oleh Kai
